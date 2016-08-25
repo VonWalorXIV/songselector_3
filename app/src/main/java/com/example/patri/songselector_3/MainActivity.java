@@ -28,7 +28,6 @@ public class MainActivity extends Activity implements OnClickListener{
             "Ashes to Ashes",
             "Love will tear us apart",
             "Taste You",
-            "Mountains"
     };
 
     private Random rnd = new Random();
