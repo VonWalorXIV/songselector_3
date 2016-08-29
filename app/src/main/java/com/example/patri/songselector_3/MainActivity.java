@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class MainActivity extends Activity implements OnClickListener{
 
-    private static final String [] songs = {"Just like Heaven",
+    private static String [] songs = {"Just like Heaven",
             "The Kill",
             "Fire Water Burn",
             "Many of Horror",

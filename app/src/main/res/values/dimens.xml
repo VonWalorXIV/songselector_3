@@ -6,4 +6,7 @@
     <dimen name="randSongSize">30sp</dimen>
     <dimen name="headingSize">32sp</dimen>
     <dimen name="playagainSize">20sp</dimen>
+    <dimen name="payedYesSize">20sp</dimen>
+    <dimen name="playesLaterSize">20sp</dimen>
+    <dimen name="playedNotToday">20sp</dimen>
 </resources>

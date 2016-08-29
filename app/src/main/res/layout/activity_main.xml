@@ -47,4 +47,35 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:textSize="@dimen/playagainSize" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/playedYes"
+        android:layout_marginTop="59dp"
+        android:layout_alignTop="@+id/randSong"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/payedYesSize" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Later"
+        android:id="@+id/playedLater"
+        android:layout_alignTop="@+id/playedYes"
+        android:layout_alignLeft="@+id/randSong"
+        android:layout_alignStart="@+id/randSong"
+        android:textSize="@dimen/playesLaterSize" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not Today"
+        android:id="@+id/playesNotToday"
+        android:layout_alignTop="@+id/playedLater"
+        android:layout_toLeftOf="@+id/playagain"
+        android:layout_toStartOf="@+id/playagain"
+        android:textSize="@dimen/playedNotToday" />
 </RelativeLayout>
