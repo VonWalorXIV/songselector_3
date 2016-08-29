@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nextSongSize">36sp</dimen>
-    <dimen name="randSongSize">30sp</dimen>
+    <dimen name="randSongSize">20sp</dimen>
     <dimen name="headingSize">32sp</dimen>
     <dimen name="playagainSize">20sp</dimen>
     <dimen name="payedYesSize">20sp</dimen>

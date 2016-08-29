@@ -15,19 +15,20 @@
         android:text="next song to play"
         android:id="@+id/nextSong"
         android:textSize="@dimen/nextSongSize"
-        android:layout_above="@+id/randSong"
+        android:layout_below="@+id/heading"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="120dp" />
+        android:layout_marginTop="63dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Random Song"
+        android:text="New Song"
         android:id="@+id/randSong"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="221dp"
-        android:textSize="@dimen/randSongSize" />
+        android:textSize="@dimen/randSongSize"
+        android:layout_above="@+id/playagain"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="93dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,31 +52,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yes"
-        android:id="@+id/playedYes"
-        android:layout_marginTop="59dp"
-        android:layout_alignTop="@+id/randSong"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="@dimen/payedYesSize" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Later"
         android:id="@+id/playedLater"
-        android:layout_alignTop="@+id/playedYes"
-        android:layout_alignLeft="@+id/randSong"
-        android:layout_alignStart="@+id/randSong"
-        android:textSize="@dimen/playesLaterSize" />
+        android:textSize="@dimen/playesLaterSize"
+        android:layout_toLeftOf="@+id/playagain"
+        android:layout_toStartOf="@+id/playagain"
+        android:layout_alignTop="@+id/randSong" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not Today"
-        android:id="@+id/playesNotToday"
-        android:layout_alignTop="@+id/playedLater"
-        android:layout_toLeftOf="@+id/playagain"
-        android:layout_toStartOf="@+id/playagain"
-        android:textSize="@dimen/playedNotToday" />
+        android:id="@+id/lastSongIndicator"
+        android:layout_below="@+id/randSong"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

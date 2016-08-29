@@ -31,9 +31,13 @@ public class MainActivity extends Activity implements OnClickListener{
             "Just like heaven"
     };
 
+//    private static String [] songs = {"Song 1", "Song 2", "Song 3"};
+
     private Random rnd = new Random();
     private long randomSeed=1;
     private Typeface ttf;
+
+    int songnumber = 0;
 
     private List<Integer> playedSongs = new ArrayList<>();
 
@@ -46,13 +50,22 @@ public class MainActivity extends Activity implements OnClickListener{
         ((TextView)findViewById(R.id.nextSong)).setTypeface(ttf);
         ((TextView)findViewById(R.id.heading)).setTypeface(ttf);
         ((TextView)findViewById(R.id.playagain)).setTypeface(ttf);
+        ((TextView)findViewById(R.id.playedLater)).setTypeface(ttf);
+        ((TextView)findViewById(R.id.lastSongIndicator)).setTypeface(ttf);
         startSongSelect();
     }
 
     private void startSongSelect(){
 //        TextView nxSong = (TextView) findViewById(R.id.nextSong);
         TextView rndSong = (TextView) findViewById(R.id.randSong);
-        rndSong.setOnClickListener(this);
+        rndSong.setText("");
+
+        TextView gespieltLater = (TextView) findViewById(R.id.playedLater);
+        gespieltLater.setText("");
+
+        TextView nameLied = (TextView) findViewById(R.id.nextSong);
+        nameLied.setText("START");
+        nameLied.setOnClickListener(this);
 
 
     }
@@ -73,43 +86,93 @@ public class MainActivity extends Activity implements OnClickListener{
         }
     };
 
+    public int selectSong(){
+        Boolean played = true;
+
+        int snumber = 0;
+
+        while (played){
+            snumber = genRand();
+            played = checkIfPlayed(snumber);
+        };
+
+        return snumber;
+    };
+
+    public void checkDone(){
+        if (playedSongs.size() == songs.length){
+            TextView lastSongIndicator = (TextView) findViewById(R.id.lastSongIndicator);
+            lastSongIndicator.setText("");
+            TextView nxSong = (TextView) findViewById(R.id.nextSong);
+            nxSong.setText("All Songs played");
+            TextView lastSong = (TextView) findViewById(R.id.randSong);
+            lastSong.setText("");
+            lastSong.setOnClickListener(null);
+            TextView playLater = (TextView) findViewById(R.id.playedLater);
+            playLater.setText("");
+            playLater.setOnClickListener(null);
+            TextView playAgain = (TextView)findViewById(R.id.playagain);
+            playAgain.setText("Play Again?");
+            playAgain.setOnClickListener(this);
+
+        } else {
+            if (playedSongs.size() == songs.length-1){
+                TextView lastSongIndicator = (TextView) findViewById(R.id.lastSongIndicator);
+                lastSongIndicator.setText("LAST UNPLAYED SONG");
+            }
+            songnumber = selectSong();
+
+            TextView nxSong = (TextView) findViewById(R.id.nextSong);
+            nxSong.setText(songs[songnumber]);
+        }
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.randSong){
             //generate rnd number, select song from array, display in nxSong-Textview
-            int songnumber = 0;
-            Boolean played = true;
-
-            while (played){
-                songnumber = genRand();
-                played = checkIfPlayed(songnumber);
-            }
 
             playedSongs.add(songnumber);
-
-            if (playedSongs.size() == songs.length){
-                TextView lastSong = (TextView) findViewById(R.id.randSong);
-                lastSong.setText("This is the last unplayed Song!");
-                lastSong.setOnClickListener(null);
-                TextView playAgain = (TextView)findViewById(R.id.playagain);
-                playAgain.setText("Play Again?");
-                playAgain.setOnClickListener(this);
-            }
-
-            TextView nxSong = (TextView) findViewById(R.id.nextSong);
-            nxSong.setText(songs[songnumber]);
-
+            checkDone();
 
         } else if (view.getId() == R.id.playagain){
             playedSongs.clear();
-            TextView lastSong = (TextView) findViewById(R.id.randSong);
-            TextView nextSong = (TextView) findViewById(R.id.nextSong);
-            TextView playAgain = (TextView) findViewById(R.id.playagain);
+
+            TextView rndSong = (TextView) findViewById(R.id.randSong);
+            rndSong.setText("");
+            rndSong.setOnClickListener(null);
+
+            TextView gespieltLater = (TextView) findViewById(R.id.playedLater);
+            gespieltLater.setText("");
+            gespieltLater.setOnClickListener(null);
+
+            TextView nameLied = (TextView) findViewById(R.id.nextSong);
+            nameLied.setText("START");
+            nameLied.setOnClickListener(this);
+
+            TextView playAgain = (TextView)findViewById(R.id.playagain);
             playAgain.setText("");
             playAgain.setOnClickListener(null);
-            nextSong.setText("next Song to play");
-            lastSong.setText("Random Song");
-            lastSong.setOnClickListener(this);
+
+        } else if (view.getId() == R.id.playedLater){
+            int oldSongNumber = songnumber;
+            while (oldSongNumber == songnumber) {
+                songnumber = selectSong();
+            }
+            TextView nxSong = (TextView) findViewById(R.id.nextSong);
+            nxSong.setText(songs[songnumber]);
+        } else if (view.getId() == R.id.nextSong){
+            songnumber = selectSong();
+            TextView nxSong = (TextView) findViewById(R.id.nextSong);
+            nxSong.setText(songs[songnumber]);
+            TextView nameLied = (TextView) findViewById(R.id.nextSong);
+            nameLied.setOnClickListener(null);
+            TextView rndSong = (TextView) findViewById(R.id.randSong);
+            rndSong.setText("Next Song");
+            rndSong.setOnClickListener(this);
+            TextView gespieltLater = (TextView) findViewById(R.id.playedLater);
+            gespieltLater.setText("Later");
+            gespieltLater.setOnClickListener(this);
         }
     }
 }
