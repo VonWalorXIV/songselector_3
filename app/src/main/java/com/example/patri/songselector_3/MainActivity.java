@@ -13,23 +13,26 @@ import java.util.Random;
 
 public class MainActivity extends Activity implements OnClickListener{
 
-    private static String [] songs = {"Just like Heaven",
-            "The Kill",
-            "Fire Water Burn",
-            "Many of Horror",
-            "I am the Highway",
-            "Teenage Angst",
+    private static String [] songs = {
             "Jenny was a friend of mine",
             "When you where young",
+            "Many of Horror",
+            "Ashes to Ashes",
+            "Just like Heaven",
+            "The Kill",
+            "Fire Water Burn",
+            "I am the Highway",
+            "Teenage Angst",
             "Just a Boy",
             "The Funeral",
             "Black Swan Song",
             "Wires",
-            "Ashes to Ashes",
             "Love will tear us apart",
             "Taste You",
-            "Just like heaven"
+            "High and Dry"
     };
+
+    private static int [] tunedSongs = {0,1,2};
 
 //    private static String [] songs = {"Song 1", "Song 2", "Song 3"};
 
@@ -38,6 +41,7 @@ public class MainActivity extends Activity implements OnClickListener{
     private Typeface ttf;
 
     int songnumber = 0;
+    boolean tuningFlag = false;
 
     private List<Integer> playedSongs = new ArrayList<>();
 
@@ -120,7 +124,27 @@ public class MainActivity extends Activity implements OnClickListener{
                 TextView lastSongIndicator = (TextView) findViewById(R.id.lastSongIndicator);
                 lastSongIndicator.setText("LAST UNPLAYED SONG");
             }
-            songnumber = selectSong();
+
+            if (tuningFlag){
+                if ((songnumber == 0) && !(playedSongs.contains(1))){
+                    songnumber = 1;
+                }else if ((songnumber == 0) && !(playedSongs.contains(2))){
+                    songnumber = 2;
+                } else if ((songnumber == 1) && !(playedSongs.contains(0))){
+                    songnumber = 0;
+                } else if ((songnumber == 1) && !(playedSongs.contains(2))){
+                    songnumber = 2;
+                } else if ((songnumber == 2) && !(playedSongs.contains(0))){
+                    songnumber = 0;
+                } else if ((songnumber == 2) && !(playedSongs.contains(1))){
+                    songnumber = 1;
+                } else{
+                    songnumber = selectSong();
+                }
+            } else{
+                songnumber = selectSong();
+            }
+
 
             TextView nxSong = (TextView) findViewById(R.id.nextSong);
             nxSong.setText(songs[songnumber]);
@@ -133,6 +157,12 @@ public class MainActivity extends Activity implements OnClickListener{
             //generate rnd number, select song from array, display in nxSong-Textview
 
             playedSongs.add(songnumber);
+            if ((songnumber == 0) || (songnumber == 1) || (songnumber == 2)){
+                tuningFlag = true;
+            }else{
+                tuningFlag = false;
+            }
+
             checkDone();
 
         } else if (view.getId() == R.id.playagain){
@@ -156,9 +186,32 @@ public class MainActivity extends Activity implements OnClickListener{
 
         } else if (view.getId() == R.id.playedLater){
             int oldSongNumber = songnumber;
-            while (oldSongNumber == songnumber) {
-                songnumber = selectSong();
+
+            if (tuningFlag){
+                if ((songnumber == 0) && !(playedSongs.contains(1))){
+                    songnumber = 1;
+                }else if ((songnumber == 0) && !(playedSongs.contains(2))){
+                    songnumber = 2;
+                } else if ((songnumber == 1) && !(playedSongs.contains(0))){
+                    songnumber = 0;
+                } else if ((songnumber == 1) && !(playedSongs.contains(2))){
+                    songnumber = 2;
+                } else if ((songnumber == 2) && !(playedSongs.contains(0))){
+                    songnumber = 0;
+                } else if ((songnumber == 2) && !(playedSongs.contains(1))){
+                    songnumber = 1;
+                } else{
+                    while (oldSongNumber == songnumber) {
+                        songnumber = selectSong();
+                    }
+                }
+            } else{
+                while (oldSongNumber == songnumber) {
+                    songnumber = selectSong();
+                }
             }
+
+
             TextView nxSong = (TextView) findViewById(R.id.nextSong);
             nxSong.setText(songs[songnumber]);
         } else if (view.getId() == R.id.nextSong){
