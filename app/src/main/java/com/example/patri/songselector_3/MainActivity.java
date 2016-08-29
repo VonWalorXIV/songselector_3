@@ -68,7 +68,7 @@ public class MainActivity extends Activity implements OnClickListener{
         gespieltLater.setText("");
 
         TextView nameLied = (TextView) findViewById(R.id.nextSong);
-        nameLied.setText("START");
+        nameLied.setText("Start");
         nameLied.setOnClickListener(this);
 
 
@@ -122,7 +122,7 @@ public class MainActivity extends Activity implements OnClickListener{
         } else {
             if (playedSongs.size() == songs.length-1){
                 TextView lastSongIndicator = (TextView) findViewById(R.id.lastSongIndicator);
-                lastSongIndicator.setText("LAST UNPLAYED SONG");
+                lastSongIndicator.setText("Last unplayed Song");
             }
 
             if (tuningFlag){
@@ -177,7 +177,7 @@ public class MainActivity extends Activity implements OnClickListener{
             gespieltLater.setOnClickListener(null);
 
             TextView nameLied = (TextView) findViewById(R.id.nextSong);
-            nameLied.setText("START");
+            nameLied.setText("Start");
             nameLied.setOnClickListener(this);
 
             TextView playAgain = (TextView)findViewById(R.id.playagain);

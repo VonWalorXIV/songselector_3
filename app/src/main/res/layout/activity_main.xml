@@ -7,11 +7,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/molkos2_smaller"
     tools:context="com.example.patri.songselector_2.MainActivity">
+
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:background="@drawable/molkos2" />-->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFF"
         android:text="next song to play"
         android:id="@+id/nextSong"
         android:textSize="@dimen/nextSongSize"
@@ -22,6 +31,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFF"
         android:text="New Song"
         android:id="@+id/randSong"
         android:textSize="@dimen/randSongSize"
@@ -33,6 +43,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFF"
         android:text="The Molkos play"
         android:id="@+id/heading"
         android:layout_alignParentTop="true"
@@ -43,6 +54,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFF"
         android:id="@+id/playagain"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -52,6 +64,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFF"
         android:text="Later"
         android:id="@+id/playedLater"
         android:textSize="@dimen/playesLaterSize"
@@ -62,6 +75,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFFF"
         android:id="@+id/lastSongIndicator"
         android:layout_below="@+id/randSong"
         android:layout_alignParentLeft="true"
