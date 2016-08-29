@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ttf = Typeface.createFromAsset(getAssets(),"JandaManateeSolid.ttf");
+        ttf = Typeface.createFromAsset(getAssets(),"MotionPicture_PersonalUseOnly.ttf");
         ((TextView)findViewById(R.id.randSong)).setTypeface(ttf);
         ((TextView)findViewById(R.id.nextSong)).setTypeface(ttf);
         ((TextView)findViewById(R.id.heading)).setTypeface(ttf);
